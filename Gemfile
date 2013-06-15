@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 1.0.1'
 
 gem 'wicked'
 gem 'haml-rails'
+gem 'coveralls', require: false
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
