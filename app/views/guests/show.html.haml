@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Address:
+  = @guest.address_id
+%p
+  %b Guest:
+  = @guest.guest_id
+%p
+  %b First name:
+  = @guest.first_name
+%p
+  %b Last name:
+  = @guest.last_name
+%p
+  %b Title:
+  = @guest.title
+%p
+  %b Email:
+  = @guest.email
+%p
+  %b Twenty one:
+  = @guest.twenty_one
+%p
+  %b Eighteen:
+  = @guest.eighteen
+
+= link_to 'Edit', edit_guest_path(@guest)
+\|
+= link_to 'Back', guests_path
