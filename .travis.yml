@@ -1,5 +1,5 @@
 rvm:
-  - "2.0.0-p195"
+  - "2.0.0"
 
 before_script:
   - psql -c 'create database dans_the_man_test;' -U postgres
