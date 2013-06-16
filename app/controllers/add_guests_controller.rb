@@ -30,12 +30,16 @@ class AddGuestsController < ApplicationController
   end
 
   def create_additional_guest
-    @guest = Guest.new(guest_params)
-    if @guest.save
-      redirect_to wizard_path(:additional_guest) if params[:commit] == "Add More"
-      redirect_to wizard_path(:summary) if params[:commit] == "Done"
+    if params[:commit] == "Go to Summary"
+      redirect_to wizard_path(:summary)            
     else
-      render 'add_guests/guest'
+      @guest = Guest.new(guest_params)
+      if @guest.save
+        redirect_to wizard_path(:additional_guest) if params[:commit] == "Add More"
+        redirect_to wizard_path(:summary)          if params[:commit] == "Add this one then go to Summary"
+      else
+        render 'add_guests/guest'
+      end
     end
   end
 

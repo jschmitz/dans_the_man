@@ -9,14 +9,14 @@
           %li= msg
 
   .field
+    = f.label :title
+    = select_tag(:title, options_for_select(FormalTitle.titles))
+  .field
     = f.label :first_name
     = f.text_field :first_name
   .field
     = f.label :last_name
     = f.text_field :last_name
-  .field
-    = f.label :title
-    = f.text_field :title
   .field
     = f.label :email
     = f.text_field :email
@@ -30,4 +30,5 @@
     = f.hidden_field :guest_id, { value: session[:guest_id] }
   .actions
     = f.submit 'Add More'
-    = f.submit 'Done'
+    = f.submit 'Add this one then go to Summary'
+    = f.submit 'Go to Summary'

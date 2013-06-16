@@ -8,14 +8,14 @@
           %li= msg
 
   .field
+    = f.label :title
+    = select_tag(:title, options_for_select(FormalTitle.titles))
+  .field
     = f.label :first_name
     = f.text_field :first_name
   .field
     = f.label :last_name
     = f.text_field :last_name
-  .field
-    = f.label :title
-    = f.text_field :title
   .field
     = f.label :email
     = f.text_field :email

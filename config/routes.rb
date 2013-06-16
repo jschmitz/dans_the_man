@@ -1,4 +1,6 @@
 DansTheMan::Application.routes.draw do
+  root to: "guests#index"
+
   resources :guests
   resources :addresses
   resources :add_guests
