@@ -32,6 +32,9 @@ gem 'wicked'
 gem 'haml-rails'
 gem 'coveralls', require: false
 gem 'newrelic_rpm'
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
