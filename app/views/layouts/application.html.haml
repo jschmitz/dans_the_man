@@ -6,4 +6,15 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    = yield
+    .navbar
+      .navbar-inner
+        =link_to "DansTheMan", "#", {class: "brand"}
+        %ul{class: "nav"}
+          %li.active
+            =link_to "Guests", "#"
+          %li
+            =link_to "Invitations", "#"
+          %li
+            =link_to "Cool Stuff I don't know about", "#"
+    %container
+      = yield
