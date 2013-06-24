@@ -1,5 +1,5 @@
 %h1
-  = link_to "Start or continue with your Guest List", add_guests_path
+  = link_to "Add more Guests!", add_guests_path
 
 
 %br
@@ -7,10 +7,8 @@
 
 %h2 All of your Guests
 
-%table
+%table.table.table-condensed
   %tr
-    %th Address
-    %th Guest
     %th First name
     %th Last name
     %th Title
@@ -22,9 +20,7 @@
     %th
 
   - @guests.each do |guest|
-    %tr
-      %td= guest.address_id
-      %td= guest.guest_id
+    %tr{ class: "#{row_style_for(guest.id, @guests) }" }
       %td= guest.first_name
       %td= guest.last_name
       %td= guest.title
