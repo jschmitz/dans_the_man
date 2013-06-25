@@ -16,7 +16,6 @@ class AddGuestsController < ApplicationController
     end
 
     render_wizard
-
   end
 
   def create_guest
@@ -30,13 +29,11 @@ class AddGuestsController < ApplicationController
   end
 
   def create_additional_guest
-    if params[:commit] == "Go to Summary"
-      redirect_to wizard_path(:summary)            
+    if go_to_summary?(params[:commit])
+      redirect_to create_redirect_for(params[:commit])
     else
-      @guest = Guest.new(guest_params)
-      if @guest.save
-        redirect_to wizard_path(:additional_guest) if params[:commit] == "Add More"
-        redirect_to wizard_path(:summary)          if params[:commit] == "Add this one then go to Summary"
+      if Guest.new(guest_params).save
+        redirect_to create_redirect_for(params[:commit])
       else
         render 'add_guests/guest'
       end
@@ -66,4 +63,21 @@ class AddGuestsController < ApplicationController
     params.require(:address).permit(:street_address, :city, :state, :zip_code)
   end
 
+  def go_to_summary?(message)
+    params[:commit] == "Go to Summary"
+  end
+
+  def one_and_done?(message)
+    message == "Add this one then go to Summary"
+  end
+
+  def add_more?(message)
+    message == "Add More"
+  end
+
+  def create_redirect_for(message)
+   return wizard_path(:additional_guest) if add_more?(message)
+   return wizard_path(:summary)          if one_and_done?(message)
+   return wizard_path(:summary)          if go_to_summary?(message)
+  end
 end
