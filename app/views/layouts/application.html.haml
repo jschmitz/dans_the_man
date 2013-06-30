@@ -16,5 +16,9 @@
             =link_to "Invitations", "#"
           %li
             =link_to "Cool Stuff I don't know about", "#"
+          %li
+            =link_to "Logout", "users/sign_out", method: :get
     %container
+      .notice=notice
+      .alert=alert
       = yield

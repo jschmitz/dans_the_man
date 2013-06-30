@@ -19,6 +19,7 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe GuestsController do
+  before { controller.stub(:authenticate_user!).and_return true }
 
   # This should return the minimal set of attributes required to create a valid
   # Guest. As you add validations to Guest, be sure to

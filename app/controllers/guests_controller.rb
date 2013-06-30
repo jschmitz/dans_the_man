@@ -1,4 +1,5 @@
 class GuestsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_guest, only: [:show, :edit, :update, :destroy]
 
   # GET /guests
