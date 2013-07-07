@@ -1,9 +1,14 @@
 .hero-unit
   %h1 Welcome!
   %p
-    Dan's the man is meant to help Dana and Amy out with their wedding Guest List and maybe more, we'll see.
-    Click Guests up above to start, its the only link that works! Or just start here!
-    =button_to "Get Started Adding Guests!", guests_path, method: :get, class: "btn btn-primary"
+    Dan's the man is meant to help Dan and Amy out with their wedding Guest List and maybe more, we'll see.
+    - if user_signed_in?
+      =button_to "Add Guests!", guests_path, method: :get, class: "btn btn-primary"
+    - else
+      %row
+        .span2=button_to "Sign Up Now!", "/users/sign_up", method: :get, class: "btn btn-primary"
+        .span1 or
+        .span5=button_to "Sign In", "users/sign_in", method: :get, class: "btn btn-primary"
 
   %h3 Current Features
   %ul
