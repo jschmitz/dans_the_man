@@ -11,7 +11,7 @@
         =link_to "DansTheMan", "#", {class: "brand"}
         %ul{class: "nav"}
           %li.active
-            =link_to "Guests", "#"
+            =link_to "Guests", guests_path
           %li
             =link_to "Invitations", "#"
           %li
@@ -19,6 +19,8 @@
           %li
             =link_to "Logout", "users/sign_out", method: :get
     %container
-      .notice=notice
-      .alert=alert
-      = yield
+      %row
+        .span11
+          .notice=notice
+          .alert=alert
+          = yield

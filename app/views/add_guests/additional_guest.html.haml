@@ -29,6 +29,6 @@
   .field
     = f.hidden_field :guest_id, { value: session[:guest_id] }
   .actions
-    = f.submit 'Add More'
-    = f.submit 'Add this one then go to Summary'
-    = f.submit 'Go to Summary'
+    = f.submit 'Add More', class: "btn btn-primary"
+    = f.submit 'Add this one then go to Summary', class: "btn btn-primary"
+    = f.submit 'Go to Summary', class: "btn btn-primary"
