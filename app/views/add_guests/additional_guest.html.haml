@@ -24,9 +24,6 @@
     = f.label :twenty_one
     = f.check_box :twenty_one
   .field
-    = f.label :eighteen
-    = f.check_box :eighteen
-  .field
     = f.hidden_field :guest_id, { value: session[:guest_id] }
   .actions
     = f.submit 'Add More', class: "btn btn-primary"

@@ -11,7 +11,7 @@ describe "guests/index" do
         :title => "Title",
         :email => "Email",
         :twenty_one => false,
-        :eighteen => true
+        :user_id => 1
       ),
       stub_model(Guest,
         :address_id => 1,
@@ -21,7 +21,7 @@ describe "guests/index" do
         :title => "Title",
         :email => "Email",
         :twenty_one => false,
-        :eighteen => true
+        :user_id => 1
       )
     ])
   end
@@ -34,6 +34,5 @@ describe "guests/index" do
     assert_select "tr>td", :text => "Title".to_s, :count => 2
     assert_select "tr>td", :text => "Email".to_s, :count => 2
     assert_select "tr>td", :text => false.to_s, :count => 2
-    assert_select "tr>td", :text => true.to_s, :count => 2
   end
 end

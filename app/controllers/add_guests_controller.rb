@@ -32,7 +32,8 @@ class AddGuestsController < ApplicationController
     if go_to_summary?(params[:commit])
       redirect_to create_redirect_for(params[:commit])
     else
-      if Guest.new(guest_params).save
+      guest = Guest.new(guest_params)
+      if current_user.guests << guest
         redirect_to create_redirect_for(params[:commit])
       else
         render 'add_guests/guest'
@@ -56,7 +57,7 @@ class AddGuestsController < ApplicationController
 
   private
   def guest_params
-    params.require(:guest).permit(:address_id, :guest_id, :first_name, :last_name, :title, :email, :twenty_one, :eighteen)
+    params.require(:guest).permit(:address_id, :guest_id, :first_name, :last_name, :title, :email, :twenty_one, :eighteen, :user_id)
   end
 
   def address_params

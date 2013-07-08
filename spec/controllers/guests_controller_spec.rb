@@ -24,16 +24,32 @@ describe GuestsController do
   # This should return the minimal set of attributes required to create a valid
   # Guest. As you add validations to Guest, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "address_id" => "1", first_name: "bill" } }
+  let(:valid_attributes) { { "address_id" => "1", first_name: "bill", user_id: 1 } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # GuestsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  def sign_in(user = double('user'))
+    if user.nil?
+      request.env['warden'].stub(:authenticate!).
+        and_throw(:warden, {:scope => :user})
+      controller.stub :current_user => nil
+    else
+      request.env['warden'].stub :authenticate! => user
+      controller.stub :current_user => user
+    end
+  end
+
   describe "GET index" do
     it "assigns all guests as @guests" do
+      user = double('user')
+      sign_in(user)
+
       guest = Guest.create! valid_attributes
+      user.stub(:guests).and_return([guest])
+
       get :index, {}, valid_session
       assigns(:guests).should eq([guest])
     end

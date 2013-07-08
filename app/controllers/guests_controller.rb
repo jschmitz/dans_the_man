@@ -5,7 +5,7 @@ class GuestsController < ApplicationController
   # GET /guests
   # GET /guests.json
   def index
-    @guests = Guest.all
+    @guests = current_user.guests
   end
 
   # GET /guests/1
@@ -70,6 +70,6 @@ class GuestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def guest_params
-      params.require(:guest).permit(:address_id, :guest_id, :first_name, :last_name, :title, :email, :twenty_one, :eighteen)
+      params.require(:guest).permit(:address_id, :guest_id, :first_name, :last_name, :title, :email, :twenty_one, :eighteen, :user_id)
     end
 end
